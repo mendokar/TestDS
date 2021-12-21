@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Bienvenido {{userType}}</h2>  
+  <button style="float: right;" (click)="close()" class="btn">Cerrar Sesion</button>
+  <button style="float: right;" *ngIf="userType == 'Administrador'" (click)="deleteAllData()" class="btn">Eliminar Data</button>
+  <br>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li *ngIf="userType == 'Administrador'" class="nav-item" role="presentation">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">Vacunas</a>
+    </li>
+    <li *ngIf="userType == 'Administrador'" class="nav-item" role="presentation">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Empleados</a>
+    </li>
+    <li *ngIf="userType == 'Empleado'" class="nav-item" role="presentation">
+      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+        aria-selected="false">Mi Perfil</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div *ngIf="userType == 'Administrador'" class="tab-pane fade show active" id="home" role="tabpanel"
+      aria-labelledby="home-tab">
+
+      <app-vaccines></app-vaccines>
+
+    </div>
+    <div *ngIf="userType == 'Administrador'" class="tab-pane fade" id="profile" role="tabpanel"
+      aria-labelledby="profile-tab">
+
+      <app-employees></app-employees>
+
+    </div>
+    <div *ngIf="userType == 'Empleado'" class="tab-pane fade" id="contact" role="tabpanel"
+      aria-labelledby="contact-tab">
+
+      <app-profile></app-profile>
+
+    </div>
+  </div>
+</div>

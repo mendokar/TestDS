@@ -1,0 +1,32 @@
+<div class="container">
+
+    <form [formGroup]="employeForm" (ngSubmit)="onFormSubmit()">
+      <h3>Registrar Empleados</h3>      
+      <div class="input-group">
+        <label for="">DUI</label>
+        <input [class.border-danger]="employeForm.get('dui')?.touched && employeForm.get('dui')?.invalid" type="number" formControlName="dui" placeholder="DUI">
+        <div *ngIf="employeForm.get('dui')?.touched && employeForm.get('dui')?.hasError('required')" class="text-sm text-danger">DUI es necesario para continuar.</div>
+        <div *ngIf="employeForm.get('dui')?.touched && employeForm.get('dui')?.hasError('min')" class="text-sm text-danger">Min 9 required</div>
+      </div>
+      <label for="">Nombres (MAYUSCULAS)</label>
+       <div class="input-group">
+        <input [class.border-danger]="employeForm.get('names')?.touched && employeForm.get('names')?.invalid" type="text" formControlName="names" placeholder="names">
+        <div *ngIf="employeForm.get('names')?.touched && employeForm.get('names')?.hasError('required')" class="text-sm text-danger">Nombres es necesario para continuar.</div>
+        <div *ngIf="employeForm.get('names')?.touched && employeForm.get('names')?.hasError('min')" class="text-sm text-danger">Min 1 required</div>
+      </div>
+      <div class="input-group">
+        <label for="">Apellidos (MAYUSCULAS)</label>
+        <input [class.border-danger]="employeForm.get('lastnames')?.touched && employeForm.get('lastnames')?.invalid" type="text" formControlName="lastnames" placeholder="lastnames">
+        <div *ngIf="employeForm.get('lastnames')?.touched && employeForm.get('lastnames')?.hasError('required')" class="text-sm text-danger">Apellidos es necesario para continuar</div>
+        <div *ngIf="employeForm.get('lastnames')?.touched && employeForm.get('lastnames')?.hasError('pattern')" class="text-sm text-danger">Min 1 required</div>
+      </div>
+      <div class="input-group">
+        <label for="">Correo</label>
+        <input [class.border-danger]="employeForm.get('email')?.touched && employeForm.get('email')?.invalid" type="email" formControlName="email" placeholder="email">
+        <div *ngIf="employeForm.get('email')?.touched && employeForm.get('email')?.hasError('required')" class="text-sm text-danger">Correo es necesario para continuar</div>
+        <div *ngIf="employeForm.get('email')?.touched && employeForm.get('email')?.hasError('min')" class="text-sm text-danger">Min 1 required</div>
+      </div>
+      <button class="btn btn-primary" [disabled]="employeForm.invalid" style="margin-top: 40px;" type="submit">Registrar Empleado</button>
+    </form>
+  </div>
+

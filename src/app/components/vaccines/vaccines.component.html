@@ -1,0 +1,72 @@
+<div class="container">
+    <button style="float: right;" (click)="getAllVaccines()" class="btn btn-primary">Recargar Tabla</button>
+
+    <h2>Filtros</h2>
+    <div class="row">
+        <div class="col-3">
+            <div class="input-group">
+                <label for="">Campo</label>
+                <select [(ngModel)]="field" name="field">                    
+                    <option value="dui">DUI</option>
+                    <option value="names">Nombres</option>
+                    <option value="lastnames">Apellidos</option>
+                    <option value="email">Correo</option>
+                    <option value="dateBorn">Fecha Nacimiento</option>
+                    <option value="address">Direccion Domicilio</option>
+                    <option value="phone">Telefono Movil</option>
+                    <option value="vaccine">Estado Vacunación</option>
+                    <option value="vaccineType">Tipo Vacuna</option>
+                    <option value="vaccineType">Fecha Vacunación</option>
+                    <option value="vaccineDosis">Número de Dosis</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group">
+                <label for="">Valor</label>
+                <input type="text" name="value" id="value" class="" [(ngModel)]="value">
+            </div>
+
+        </div>
+        <div class="col-6">
+            <br>
+            <button (click)="filter()" class="btn btn-primary">Consultar</button>
+        </div>
+    </div>
+
+    <br>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">DUI</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Direccion Domicilio</th>
+                <th scope="col">Telefono Movil</th>
+                <th scope="col">Estado Vacunación</th>
+                <th scope="col">Tipo Vacuna</th>
+                <th scope="col">Fecha Vacunación</th>
+                <th scope="col">Número de Dosis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vac of allVaccines;let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{vac.dui}}</td>
+                <td>{{vac.names}}</td>
+                <td>{{vac.lastnames}}</td>
+                <td>{{vac.email}}</td>
+                <td>{{vac.dateBorn}}</td>
+                <td>{{vac.address}}</td>
+                <td>{{vac.phone}}</td>
+                <td>{{vac.vaccine}}</td>
+                <td>{{vac.vaccineDate}}</td>
+                <td>{{vac.vaccineDosis}}</td>
+                <td>{{vac.vaccineType}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

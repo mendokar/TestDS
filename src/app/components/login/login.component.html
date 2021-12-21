@@ -1,0 +1,17 @@
+<div class="container">    
+    <form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">
+      <h3>Login DominoSoft</h3>
+      <div class="input-group">
+          <label for="">Correo Electrónico</label>
+        <input [class.border-danger]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" type="text" formControlName="email" placeholder="email">
+        <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')" class="text-sm text-danger">Correo es necesario para continuar</div>
+      </div>
+      <div class="input-group">
+          <label for="">Contraseña</label>
+        <input [class.border-danger]="loginForm.get('pass')?.touched && loginForm.get('pass')?.invalid" type="password" formControlName="pass" placeholder="pass">
+        <div *ngIf="loginForm.get('pass')?.touched && loginForm.get('pass')?.hasError('required')" class="text-sm text-danger">Contraseña es necesaria para continuar</div>
+        <div *ngIf="loginForm.get('pass')?.touched && loginForm.get('pass')?.hasError('min')" class="text-sm text-danger">Min 6 Caracteres</div>
+      </div>
+      <button class="btn btn-primary" [disabled]="loginForm.invalid" style="margin-top: 40px;" type="submit">Iniciar Sesión</button>
+    </form>
+  </div>
